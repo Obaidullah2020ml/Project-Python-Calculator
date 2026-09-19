@@ -32,7 +32,7 @@ python calculator.py
 The calculator uses a single `Entry` widget to display input and builds up expressions as button presses are registered. On pressing `=`, the expression is evaluated using Python's `eval()`, with `%` converted to `/100` for percentage handling.
 
 ## Screenshot
-
+image.png
 
 ## License
 
