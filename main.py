@@ -6,43 +6,51 @@ def click(event):
 
     current = entry.get()
     button_text = event.widget.cget("text")
+    operators = "+-*/%"
 
     if button_text == "C":
         entry.delete(0, tk.END)
         entry.insert(tk.END, "0")
         reset_display = False
-    elif button_text == "=":
+        return
+
+    if button_text == "=":
         try:
             expression = current.replace('%', '/100')
             result = eval(expression)
             entry.delete(0, tk.END)
             entry.insert(tk.END, str(result))
             reset_display = True
-        except Exception as e:
+        except Exception:
             entry.delete(0, tk.END)
             entry.insert(tk.END, "Error!")
             reset_display = True
-    else:
-        if reset_display:
+        return
+
+    # Handle continuing after a result
+    if reset_display:
+        if button_text in operators:
+            # keep the previous result, just append the operator
+            reset_display = False
+        else:
+            # starting a brand-new number clears the old result
             entry.delete(0, tk.END)
             current = ""
             reset_display = False
 
-        if current == "0" :
-            current = ""
+    if current == "0":
+        current = ""
 
-        #Avoid 2 consecutive operators
-        operators = "+-*/%"
-        if current and current[-1] in operators and button_text in operators:
-            current = current[:-1]  # Remove the last operator
+    # Avoid 2 consecutive operators
+    if current and current[-1] in operators and button_text in operators:
+        current = current[:-1]
 
-        #Avoid starting an expression with certain operators
-        if current == "" and button_text in "*/%":
-            return  # Do not allow starting with *, /, or %
+    # Avoid starting an expression with certain operators
+    if current == "" and button_text in "*/%":
+        return
 
-        #Finally update the entry widget
-        entry.delete(0, tk.END)
-        entry.insert(tk.END, current + button_text)
+    entry.delete(0, tk.END)
+    entry.insert(tk.END, current + button_text)
 
 root = tk.Tk() #main window
 root.title("Calculator")
