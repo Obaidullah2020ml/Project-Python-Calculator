@@ -22,9 +22,9 @@ A simple, clean calculator app built with Python's built-in `tkinter` library. I
 Clone the repo and run the script:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-python calculator.py
+git clone https://github.com/Obaidullah2020ml/Project-Python-Calculator.git
+cd Project-Python-Calculator
+python main.py
 ```
 
 ## How It Works
@@ -33,6 +33,4 @@ The calculator uses a single `Entry` widget to display input and builds up expre
 
 ## Screenshot
  ![Calculator Screenshot](image.png)
-## License
 
-This project is open source and available under the [MIT License](LICENSE).

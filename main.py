@@ -59,7 +59,7 @@ root.resizable(False, False) #disable resizing
 root.configure(bg="#F0F0F0") #background color
 
 #Entry widget
-entry = tk.Entry(root, bd=5, font=("Arial", 20), justify="right",width=17, bg ="#b6f2e9")
+entry = tk.Entry(root, bd=5, font=("Arial", 25), justify="right",width=14, bg ="#b6f2e9")
 entry.pack(pady=6)
 
 #Button Frame
@@ -75,7 +75,7 @@ buttons = [['C','(',')','/'],
 
 for i in range(len(buttons)):
     for j in range(len(buttons[i])):
-        btn = tk.Button(btn_frame, text=buttons[i][j], width=3, height=1, font=("Arial", 16))
+        btn = tk.Button(btn_frame,bg="#F7F3F3", text=buttons[i][j], width=3, height=1, font=("Arial", 16))
         btn.grid(row=i, column=j, padx=10, pady=10)
         btn.bind("<Button-1>", click) #bind the button to the click function
 
